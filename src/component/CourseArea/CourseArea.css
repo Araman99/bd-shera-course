@@ -1,0 +1,14 @@
+.courseArea{
+    display: flex;
+    background:  lightgray;
+    margin: 8px;
+    border-radius: 3px;
+}
+.ImgStyle{
+    border: 3px solid lightcyan;
+    margin: 8px;
+}
+.courseDetails{
+    color: black;
+    margin: 8px;
+}

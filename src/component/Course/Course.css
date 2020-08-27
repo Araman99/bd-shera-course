@@ -1,0 +1,9 @@
+.courseArea{
+    background-color: white;
+    border-radius: 5px;
+}
+.courseStyle{
+    background-color: gray;
+    border-radius: 5px;
+    border: 3px solid rgb(36, 52, 59);
+}

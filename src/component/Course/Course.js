@@ -1,24 +1,34 @@
 import React, { useState } from 'react';
 import database from '../../database/database'
-import { Container, Row, Col, CardDeck } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import CourseArea from '../CourseArea/CourseArea';
+import Cart from '../Cart/Cart';
+import './Course.css';
 
 const Course = () => {
     const [course, setCourse] = useState(database);
-    console.log(setCourse);
+    const [cart, setCart] = useState([]);
+    const handleOnClick = (course) =>{
+        const newCart = [...cart,course];
+        setCart(newCart);
+    }
+
+
     return (
         <div>
             <Container>
-                <Row className="mt-5 bg-success">
-                <Col> 
-                <CardDeck className="mt-5" inline>
-                    <h3>Courses You May Enroll</h3>
+                <Row className="mt-5 courseArea">
+                <Col className="courseStyle"> 
+               
+                    <h3>Courses: </h3>
                     {   
-                        course.slice(0,10).map(courselist =>  <CourseArea courselist={courselist} key={courselist.id}></CourseArea>)
+                        course.slice(0,15).map(courselist =>  <CourseArea courselist={courselist} key={courselist.id} handleOnClick={handleOnClick}></CourseArea>)
                     }
-                </CardDeck>
                  </Col>
-                <Col md="4">2 of 2</Col>
+                <Col md="4">
+                    <h3>Order Summary</h3>
+                    <Cart cart={cart}/>
+                </Col>
                 </Row>
             </Container>
         </div>

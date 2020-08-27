@@ -1,24 +1,23 @@
 import React from 'react';
-import {  Card } from 'react-bootstrap';
-
+import './CourseArea.css'
 const CourseArea = (props) => {
 
-      const {title, description, img}=props.courselist;
+      const {title, description, img, price, discount, rating}=props.courselist;
+      const coursePrice =price-(discount*price*0.01);
+      const handleOnClick = props.handleOnClick;
 
     return (
-        <div>
-          
-  <Card className="w-50">
-    <Card.Img variant="top" src={img} fluid/>
-    <Card.Body>
-    <Card.Title>{title}</Card.Title>
-      <Card.Text>{description}
-      </Card.Text>
-    </Card.Body>
-    <Card.Footer>
-      <small className="text-muted">Last updated 3 mins ago</small>
-    </Card.Footer>
-  </Card>
+        <div className="courseArea">
+          <div>
+            <img src={img} className="ImgStyle" alt=""/>
+          </div>
+          <div className="courseDetails">
+          <h4>{title}</h4>
+          <p>Details: <small>{description}</small></p>
+          <p>Duration: ${coursePrice} <del>${price}</del></p>
+          <p>Ratting: {rating}</p>
+          <button onClick={() => {handleOnClick(props.courselist)}}>Enroll Now</button>
+          </div>
 
         </div>
     );
